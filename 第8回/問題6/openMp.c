@@ -58,3 +58,5 @@ int main()
 
     return 0;
 }
+
+// gcc -fopenmp -O2 -Wall -o openMp openMp.c
