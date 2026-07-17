@@ -1,0 +1,84 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% Japanese support (compile with lualatex)
+\usepackage{luatexja}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\title{Beamer Sample}
+\subtitle{Diffusion Equation}
+\author{T. Toida}
+\institute{Simulation Engineering}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Agenda}
+  \tableofcontents
+\end{frame}
+
+\section{Model}
+
+\begin{frame}{Diffusion Equation}
+  Consider the 1D diffusion equation:
+  \[
+    \frac{\partial u}{\partial t} = K\frac{\partial^2 u}{\partial x^2},
+    \quad 0 < x < 1,\; t > 0,\; K > 0.
+  \]
+  Example boundary conditions (Dirichlet):
+  \[
+    u(0,t)=u(1,t)=0.
+  \]
+\end{frame}
+
+\section{Fourier Expansion}
+
+\begin{frame}{Fourier Sine Expansion}
+  Under homogeneous Dirichlet BC, we use
+  \[
+    u(x,t)=\sum_{k=1}^{\infty}\hat{u}(k,t)\sin(k\pi x).
+  \]
+  Coefficients are obtained by
+  \[
+    \hat{u}(k,t)=2\int_0^1 u(x,t)\sin(k\pi x)\,dx.
+  \]
+\end{frame}
+
+\begin{frame}{Mode Decay}
+  Each Fourier mode satisfies
+  \[
+    \frac{d\hat{u}(k,t)}{dt}=-(k\pi)^2K\,\hat{u}(k,t),
+  \]
+  therefore
+  \[
+    \hat{u}(k,t)=\hat{u}(k,0)e^{-(k\pi)^2Kt}.
+  \]
+  \begin{itemize}
+    \item Large $k$ (fine structures) decay faster.
+    \item The solution becomes smoother as time evolves.
+  \end{itemize}
+\end{frame}
+
+\section{Summary}
+
+\begin{frame}{Summary}
+  \begin{enumerate}
+    \item Diffusion smooths spatial variations.
+    \item Fourier decomposition gives mode-wise dynamics.
+    \item Beamer is suitable for math-heavy slides.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \centering
+  {\Huge Thank you!}
+\end{frame}
+
+\end{document}
